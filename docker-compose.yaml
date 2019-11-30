@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+
+  # nuxt.template
+  albion.guildbot:
+    container_name: albion.guildbot
+    image: aliart/albion.guildbot
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+      args:
+        DOCKER_UID: 1001
+        DOCKER_GID: 1001
+        USERNAME: guildbot
+    volumes:
+      - ./:/app
+    networks:
+      - albion.guildbot
+
+networks:
+  albion.guildbot:
+    external:
+      name: albion.guildbot

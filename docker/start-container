@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if  [ -f "/app/package.json" ]; then
+    cd /app
+    su  -c "npm install" guildbot
+    su  -c "npm start" guildbot
+    
+else
+    echo "no package.json found :("  
+    echo "going to keep alive with tail -f dev/null if debug needed"  
+    tail -f /dev/null
+fi
